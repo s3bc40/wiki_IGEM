@@ -3,33 +3,45 @@
     [
         {
             "name":"Antoine",
+            "job":"Biologist",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"antoine.png"
+            "img":"antoine.png",
+            "color":"#ff8000"
         },
         {
             "name":"Jarvis",
+            "job":"Biologist",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"jarvis.png"
+            "img":"jarvis.png",
+            "color":"#ff0000"
         },
         {
             "name":"Louise",
+            "job":"Bioinformatician",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"louise.png"
+            "img":"louise.png",
+            "color":"#39e600"
         },
         {
             "name":"Margo",
+            "job":"Bioinformatician",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"antoine.png"
+            "img":"margo.png",
+            "color":"#00bfff"
         },
         {
             "name":"Marine",
+            "job":"Supervisor",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"marine.png"
+            "img":"marine.png",
+            "color":"#ff00ff"
         },
         {
             "name":"Nathalie",
+            "job":"Supervisor",
             "bio":"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.",
-            "img":"nathalie.png"
+            "img":"nathalie.png",
+            "color":"#8000ff"
         }
     ]
 }

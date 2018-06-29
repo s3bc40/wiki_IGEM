@@ -14,19 +14,18 @@ $(function() {
     var Member = {
         init: function(obj) {
             this.name = obj.name;
+            this.job = obj.job;
             this.bio = obj.bio;
             this.img = obj.img;
+            this.color = obj.color;
         },
         // function to classify the data
         inject_HTML: function () {
-            var row = 0;
-            if(this.count % 3 === 0) {
-                $(".card_memb").append(`<div class='row row-${this.count}'></div>`);
-                row = this.count;                
-            }
-            $(`row-${row}`).append(`<div class="col-xs-12 col-sm-4"><div class="card"><img class="card-img-top" src="img/${this.img}" alt="${this.img}">`+
-                `<div class="card-body"><h4 class="card-title">${this.name}</h4>`+
-                `<p class="card-text">${this.bio}</p> </div></div></div>`);
+            var content_HTML = "";
+            content_HTML += `<div class="col-xs-12 col-sm-4" ><div id="${this.name}" class="card"><img class="card-img-top" src="img/${this.img}" alt="${this.img}">`+
+                 `<div class="card-body"><h4 class="card-title memb-name">${this.name}</h4>`+
+                 `<i class="card-text">${this.job}</i></div></div></div>`;
+            return content_HTML;
         }
     }
     // Class variable
@@ -36,22 +35,47 @@ $(function() {
     function compute_JSON(json) {
         console.log(json);
         $.each(json, function(i,value) {
-            console.log(i);
-            console.log(value);
+            // console.log(i);
+            // console.log(value);
+            var row = 0;
             $.each(value, function(j,obj) {
                 // console.log(j);
-                console.log(obj.name);
+                // console.log(obj.name);
                 var member = Object.create(Member);
                 member.init(obj);
-                console.log(member);
-                member.inject_HTML;
-                // $(".card_memb").append(`<div class='row'><div class='col-xs-12 col-sm-4 row-${Member.count}'>C-1</div><div class='col-xs-12 col-sm-4'>C-2</div></div>`);
-                console.log(member.count);
+                // console.log(member)
+                if(Member.count % 3 === 0) {
+                    $(".card-memb").append(`<div class='row row-${Member.count}'></div>`);
+                    row = Member.count;                
+                }
+                $(`.row-${row}`).append(member.inject_HTML());
+
+                // Store data in HTML DOM
+                var container_member = `#${member.name}`;
+                $(container_member).data(member);
+                console.log($(container_member).data("name"))
                 Member.count += 1;
             });
         });
     }
 
+    // Animation on mouseover : change color of cards
+    function color_change() {
+        var obj = $(this).data();
+        $(`#${obj.name}`).find(".card-body")
+            .css({
+                "background-color":`${obj.color}`, 
+                "color":"#ffffff"});
+        //console.log(obj);
+    }
+    function color_default() {
+        var obj = $(this).data();
+        $(`#${obj.name}`).find(".card-body")
+            .removeAttr("style");
+    }
+    
     // Main program
-    json_data
+    json_data;
+    $(document).on("mouseenter", ".card", color_change);
+    $(document).on("mouseleave", ".card", color_default);
 });
