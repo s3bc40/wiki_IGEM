@@ -22,7 +22,8 @@ $(function() {
         // function to classify the data
         inject_HTML: function () {
             var content_HTML = "";
-            content_HTML += `<div class="col-xs-12 col-sm-4" ><div id="${this.name}" class="card"><img class="card-img-top" src="img/${this.img}" alt="${this.img}">`+
+            content_HTML += `<div class="col-xs-12 col-sm-4" ><div id="${this.name}" class="card">`+
+                `<img class="card-img-top" src="img/${this.img}" alt="${this.img}">`+
                  `<div class="card-body"><h4 class="card-title memb-name">${this.name}</h4>`+
                  `<i class="card-text">${this.job}</i></div></div></div>`;
             return content_HTML;
@@ -73,7 +74,7 @@ $(function() {
         $(`#${obj.name}`).find(".card-body")
             .removeAttr("style");
     }
-    
+
     // Main program
     json_data;
     $(document).on("mouseenter", ".card", color_change);
