@@ -63,20 +63,47 @@ $(function() {
     // Animation on mouseover : change color of cards
     function color_change() {
         var obj = $(this).data();
-        $(`#${obj.name}`).find(".card-body")
-            .css({
-                "background-color":`${obj.color}`, 
-                "color":"#ffffff"});
-        //console.log(obj);
+        if($(this).hasClass("team-toggled")) return;
+        else {
+            var card_body = $(`#${obj.name}`).find(".card-body");
+            card_body.animate({
+                backgroundColor: obj.color, 
+                color: "#ffffff"
+            }, 500);
+            //console.log(obj);
+        }
     }
     function color_default() {
         var obj = $(this).data();
+        if($(this).hasClass("team-toggled")) return;
         $(`#${obj.name}`).find(".card-body")
-            .removeAttr("style");
+            .animate({
+                backgroundColor: "#ffffff", 
+                color: "#000000"
+            }, 500);
+    }
+    
+    // Animation on click card
+    function banner_on() {
+        var obj = $(this).data();
+        var card_img = $(`#${obj.name}`).find(".card-img-top");
+        var card_text = $(`#${obj.name}`).find("i");
+        if($(this).hasClass("team-toggled")) {
+            card_img.slideToggle();
+            card_text.text(`${obj.job}`);
+            $(this).removeClass("team-toggled");
+        }else{
+            card_img.slideToggle();
+            setTimeout(function() {
+                card_text.text(`${obj.bio}`);
+            }, 200);
+            $(this).addClass("team-toggled");
+        }
     }
 
     // Main program
     json_data;
     $(document).on("mouseenter", ".card", color_change);
     $(document).on("mouseleave", ".card", color_default);
+    $(document).on("click",".card", banner_on);
 });

@@ -1,4 +1,12 @@
-/* Image card management */
+/* The element to apply the animation to */
+.card-body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.team-toggled {
+    min-height: 454.8px;
+}
 
 /* Card management */
 .card-memb .row {
@@ -7,3 +15,10 @@
 .card {
     text-align: center;
 }
+
+/* ##### Change media view #####
+@media only screen and (max-width: 2000px) {
+    .team-toggled {
+        min-height: 254.8px;
+    }
+} */
