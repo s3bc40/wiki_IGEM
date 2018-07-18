@@ -67,7 +67,9 @@ $(function() {
             var color_list = ["#8A2BE2"," #A52A2A","#D2691E"," #6495ED","#FF1493","#228B22","#FF69B4"];
             var random_color = color_list[Math.floor(Math.random()*color_list.length)];
             $(this).find(".rectangle")
-                .css("background-color", random_color);
+                .css({
+                    backgroundColor: random_color,
+                    color: "#ffffff"});
             // var card_body = $(`#${obj.name}`).find(".card-body");
             // card_body.animate({
             //     backgroundColor: obj.color, 
@@ -79,7 +81,9 @@ $(function() {
     function color_default() {
         if($(this).find(".hidden-text").hasClass("team-toggled")) return;
         $(this).find(".rectangle")
-                .css("background-color", "#ffffff");
+            .css({
+                backgroundColor: "#ffffff",
+                color: "#000000"});
     }
     
     //Animation on click card
@@ -98,21 +102,29 @@ $(function() {
         //     $(this).addClass("team-toggled");
         // }
         if($(this).find(".hidden-text").hasClass("team-toggled")) {
+            var actual_background = $(this).find(".rectangle").css("background-color");
+            $(this).removeAttr("style")
             $(this).find(".rectangle")
-                .removeAttr("style")    
+                .removeAttr("style")
+                .css({
+                    backgroundColor: actual_background,
+                    color: "#ffffff"
+                    });    
             $(this).find(".hidden-text").removeClass("team-toggled")
                 .fadeToggle();
         }else{
             var bg_color = $(this).find(".rectangle").css("background-color");
+            var rectangle_height = $(this).find(".rectangle").css("height");
             var card_height = $(this).css("height");
             $(this).find(".rectangle")
                 .css({
-                    top:`-${card_height}`,
+                    top: `0%`,
                     backgroundColor: bg_color,
                     color: "#ffffff"
                     });
             $(this).find(".hidden-text").fadeToggle(1000)
                 .addClass("team-toggled");
+            $(this).css("overflow-y","auto");
         }
     }
 
