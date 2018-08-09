@@ -124,7 +124,6 @@ $(function() {
                     });
             $(this).find(".hidden-text").fadeToggle(1000)
                 .addClass("team-toggled");
-            $(this).css("overflow-y","auto");
         }
     }
 
