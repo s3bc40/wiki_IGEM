@@ -70,6 +70,7 @@
             .card:hover > .rectangle{
                 top:80%;
             }
+
             .hidden-text{
                 display:none;
                 margin-bottom: 20px;
@@ -165,7 +166,7 @@
 
                 <div class="col-xs-12 col-sm-6 col-lg-4" >
                     <div id="Marguerite" class="card">
-                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/1/19/T--Bordeaux--margueritte.png'); background-size:cover; background-position:center;";></div>
+                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/1/19/T--Bordeaux--margueritte.png'); background-size:cover; background-position:center;"></div>
                         <div class="card-body rectangle">
                             <h5 class="card-title memb-name">
                                 <!-- ##### ECRIRE LE NOM EN DESSOUS #####-->
@@ -228,7 +229,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-4" >
                     <div id="Yasmine" class="card">
-                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/thumb/6/68/T--Bordeaux--yasmine.png/465px-T--Bordeaux--yasmine.png'); background-size:cover; background-position:top;"></div>
+                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/2/29/T--Bordeaux--yasmine1.png'); background-size:cover; background-position:center;"></div>
                         <div class="card-body rectangle">
                             <h5 class="card-title memb-name">
                                 <!-- ##### ECRIRE LE NOM EN DESSOUS #####-->
@@ -267,7 +268,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-4" >
                     <div id="Pierre" class="card">
-                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/f/f8/T--Bordeaux--pierre.png'); background-size:cover; background-position:right";></div>
+                        <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/4/48/T--Bordeaux--pierre1.png'); background-size:cover; background-position:center";></div>
                         <div class="card-body rectangle">
                             <h5 class="card-title memb-name">
                                 <!-- ##### ECRIRE LE NOM EN DESSOUS #####-->
@@ -475,7 +476,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-4" >
-                    <div id="Seb" class="card">
+                    <div id="Sebastien" class="card">
                         <div class="img-profile" style="background-image:url('http://2018.igem.org/wiki/images/9/9b/T--Bordeaux--seb.jpg'); background-size:cover; background-position:center";></div>
                         <div class="card-body rectangle">
                             <h5 class="card-title memb-name">
@@ -506,12 +507,35 @@
                 function color_change() {
                     if($(this).find(".hidden-text").hasClass("team-toggled")) return;
                     else {
+                        var img_trees = {
+                            "Marguerite" : "http://2018.igem.org/wiki/images/3/38/T--Bordeaux--ginkgo.jpg",
+                            "Estelle" : "http://2018.igem.org/wiki/images/d/d4/T--Bordeaux--olive_tree.jpeg",
+                            "Thomas" : "http://2018.igem.org/wiki/images/5/5b/T--Bordeaux--japanese_maple.jpg",
+                            "Yasmine" : "http://2018.igem.org/wiki/images/8/8b/T--Bordeaux--fir.jpg",
+                            "Ines" : "http://2018.igem.org/wiki/images/b/be/T--Bordeaux--cherry_tree.jpg",
+                            "Pierre" : "http://2018.igem.org/wiki/images/5/56/T--Bordeaux--stick_insect.jpeg",
+                            "Lorine" : "http://2018.igem.org/wiki/images/0/05/T--Bordeaux--eucalyptus.jpg",
+                            "David" : "http://2018.igem.org/wiki/images/5/55/T--Bordeaux--oak.jpg",
+                            "François" : "http://2018.igem.org/wiki/images/4/48/T--Bordeaux--poplar.jpg",
+                            "Maëlle" : "http://2018.igem.org/wiki/images/3/38/T--Bordeaux--maple.jpeg",
+                            "Sandro" : "http://2018.igem.org/wiki/images/2/24/T--Bordeaux--weeping_willow.jpg",
+                            "Jean-Clément" : "http://2018.igem.org/wiki/images/9/9e/T--Bordeaux--pine.jpg",
+                            "Frederic" : "http://2018.igem.org/wiki/images/8/8e/T--Bordeaux--linden.jpg",
+                            "Anaïs" : "http://2018.igem.org/wiki/images/9/98/T--Bordeaux--cocoa_tree.jpg",
+                            "Arthur" : "http://2018.igem.org/wiki/images/2/22/T--Bordeaux--pistachio.jpeg",
+                            "Sebastien" : "http://2018.igem.org/wiki/images/d/dc/T--Bordeaux--catalpa.jpg"
+                        }; 
                         var color_list = ["#8A2BE2"," #A52A2A","#D2691E"," #6495ED","#FF1493","#228B22","#FF69B4"];
                         var random_color = color_list[Math.floor(Math.random()*color_list.length)];
+                        var img_url = $(this).find(".img-profile")
+                            .css("background-image"); // on hover change picture with corresponding tree
+                        var card_id = $(this).attr("id");
+                        $(this).data("profile_img",img_url);
                         $(this).find(".rectangle")
                             .css({
                                 backgroundColor: random_color,
                                 color: "#ffffff"});
+                        $(this).find(".img-profile").css("background-image",`url(${img_trees[card_id]})`)
                     }
                 }
                 function color_default() {
@@ -520,6 +544,8 @@
                         .css({
                             backgroundColor: "#ffffff",
                             color: "#000000"});
+                    $(this).find(".img-profile")
+                        .css("background-image",$(this).data("profile_img"));
                 }
                 
                 //Animation on click card
